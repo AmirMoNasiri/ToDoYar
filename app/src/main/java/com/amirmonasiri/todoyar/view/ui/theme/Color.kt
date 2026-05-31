@@ -1,4 +1,4 @@
-package com.amirmonasiri.todoyar.ui.theme
+package com.amirmonasiri.todoyar.view.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
