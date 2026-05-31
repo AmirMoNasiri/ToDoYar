@@ -2,10 +2,10 @@ package com.amirmonasiri.todoyar.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+// main colors
+val Turquoise = Color(0xFF00B3B3)
+val PersianBlue = Color(0xFF1C39BB)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// background colors
+val DarkBlueGray = Color(0xFF121826)
+val IceWhite = Color(0xFFF5F8FF)
