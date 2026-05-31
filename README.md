@@ -1,4 +1,4 @@
-# To-Do Yar - Task Management Android App
+# To Do Yar - Task Management Android App
 
 An Android application for daily task management, helping users organize, prioritize, and track their activities with reminders and statistics.
 
