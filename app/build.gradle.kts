@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.datastore.preferences)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.androidx.material.icons.extended)
+    implementation("com.adamglin:phosphor-icon:1.0.0")
     ksp(libs.room.compiler)
     ksp(libs.hilt.compiler)
     testImplementation(libs.junit)
