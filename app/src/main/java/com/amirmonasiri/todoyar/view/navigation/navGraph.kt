@@ -7,6 +7,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.amirmonasiri.todoyar.view.screen.calendarScreen
+import com.amirmonasiri.todoyar.view.screen.profileScreen
+import com.amirmonasiri.todoyar.view.screen.tasksScreen
 
 
 @Composable
@@ -16,11 +19,11 @@ fun setupNavigation(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screens.Tasks.route,
+        startDestination = Screens.Calendar.route,
         modifier = Modifier.padding(paddingValues)
     ) {
-        composable(route = Screens.Tasks.route) {  }
-        composable(route = Screens.Calendar.route) {  }
-        composable(route = Screens.Profile.route) {  }
+        composable(route = Screens.Tasks.route) { tasksScreen(navController) }
+        composable(route = Screens.Calendar.route) { calendarScreen(navController) }
+        composable(route = Screens.Profile.route) { profileScreen(navController) }
     }
 }
