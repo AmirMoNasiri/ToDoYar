@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">To Do Yar</string>
 
+    <!-- Screen names -->
+    <string name="splash">Splash Screen</string>
     <string name="nav_tasks">Tasks</string>
     <string name="nav_calendar">Calendar</string>
     <string name="nav_profile">Profile</string>
