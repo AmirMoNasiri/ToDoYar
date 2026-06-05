@@ -16,8 +16,7 @@ import androidx.navigation.NavController
 @Composable
 fun calendarScreen(navController: NavController) {
     Column(
-        modifier = Modifier.fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

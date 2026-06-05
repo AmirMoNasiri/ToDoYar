@@ -42,7 +42,7 @@ fun navigationBarScreen(navController: NavController) {
 
 
             val iconSize by animateDpAsState(
-                targetValue = if (isSelected) 36.dp else 24.dp,
+                targetValue = if (isSelected) 32.dp else 20.dp,
                 animationSpec = spring(
                     dampingRatio = 0.5f,
                     stiffness = 400f
@@ -72,7 +72,7 @@ fun navigationBarScreen(navController: NavController) {
                     if (isSelected) {
                         Text(
                             text = stringResource(screen.titleRes),
-                            fontSize = 14.sp,
+                            fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.primary
                         )
                     }
