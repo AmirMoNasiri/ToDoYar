@@ -1,4 +1,4 @@
-package com.amirmonasiri.todoyar.view.screen
+package com.amirmonasiri.todoyar.view.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,14 +11,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun followUsScreen(navController: NavController) {
+fun calendarScreen(navController: NavController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Follow Us Screen",
+            "Calendar Screen",
             fontSize = 28.sp
         )
     }

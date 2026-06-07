@@ -1,4 +1,4 @@
-package com.amirmonasiri.todoyar.view.screen
+package com.amirmonasiri.todoyar.view.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

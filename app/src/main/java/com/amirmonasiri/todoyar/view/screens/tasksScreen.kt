@@ -1,4 +1,4 @@
-package com.amirmonasiri.todoyar.view.screen
+package com.amirmonasiri.todoyar.view.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,15 +10,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
+
 @Composable
-fun feedbackScreen(navController: NavController) {
+fun tasksScreen(navController: NavController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Feedback Screen",
+            "Tasks Screen",
             fontSize = 28.sp
         )
     }

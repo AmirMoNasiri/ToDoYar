@@ -1,4 +1,4 @@
-package com.amirmonasiri.todoyar.view.screen
+package com.amirmonasiri.todoyar.view.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,16 +11,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun profileScreen(
-    navController: NavController
-) {
+fun splashScreen(navController: NavController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            "Profile Screen",
+            "Splash Screen",
             fontSize = 28.sp
         )
     }
