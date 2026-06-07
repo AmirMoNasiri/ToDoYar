@@ -1,6 +1,5 @@
 package com.amirmonasiri.todoyar.view.navigation
 
-import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.size
@@ -16,7 +15,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -63,7 +61,7 @@ fun navigationBarScreen(navController: NavController) {
                 icon = {
                     Icon(
 
-                        imageVector = if (isSelected) screen.iconFill else screen.iconDuotone,
+                        imageVector = if (isSelected) screen.selectedIcon else screen.unselectedIcon,
                         contentDescription = stringResource(screen.titleRes),
                         modifier = Modifier.size(iconSize)
                     )

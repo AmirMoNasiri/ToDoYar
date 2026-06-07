@@ -9,20 +9,23 @@ import com.adamglin.phosphoricons.duotone.AndroidLogo
 import com.adamglin.phosphoricons.duotone.CalendarDots
 import com.adamglin.phosphoricons.duotone.CheckSquare
 import com.adamglin.phosphoricons.duotone.Gear
+import com.adamglin.phosphoricons.duotone.Hammer
 import com.adamglin.phosphoricons.duotone.User
+import com.adamglin.phosphoricons.duotone.Users
 import com.adamglin.phosphoricons.fill.AndroidLogo
 import com.adamglin.phosphoricons.fill.CalendarDots
 import com.adamglin.phosphoricons.fill.CheckSquare
 import com.adamglin.phosphoricons.fill.Gear
+import com.adamglin.phosphoricons.fill.Hammer
 import com.adamglin.phosphoricons.fill.User
+import com.adamglin.phosphoricons.fill.Users
 import com.amirmonasiri.todoyar.R
-
 
 sealed class Screens(
     val route: String,
     @StringRes val titleRes: Int,
-    val iconDuotone: ImageVector,
-    val iconFill: ImageVector
+    val unselectedIcon: ImageVector,
+    val selectedIcon: ImageVector
 ) {
     object Splash : Screens(
         "splash",
@@ -31,6 +34,7 @@ sealed class Screens(
         PhosphorIcons.Fill.AndroidLogo
     )
 
+    // Main Screens
     object Tasks : Screens(
         "tasks",
         R.string.nav_tasks,
@@ -52,12 +56,37 @@ sealed class Screens(
         PhosphorIcons.Fill.User
     )
 
+    // Drawer Screens
+    object Feedback : Screens(
+        "feedback", R.string.feedback,
+        PhosphorIcons.Duotone.Hammer,
+        PhosphorIcons.Fill.Hammer
+    )
+
+    object FollowUs : Screens(
+        "followUs", R.string.follow_us,
+        PhosphorIcons.Duotone.Users,
+        PhosphorIcons.Fill.Users
+    )
+
     object Settings : Screens(
-        "settings", R.string.settings, PhosphorIcons.Duotone.Gear,
+        "settings", R.string.settings,
+        PhosphorIcons.Duotone.Gear,
         PhosphorIcons.Fill.Gear
     )
 
     companion object {
         val MainScreens = listOf(Tasks, Calendar, Profile)
+        val DrawerScreens = listOf(Feedback, FollowUs, Settings)
+
+        fun titleResFor(route: String?): Int = when (route) {
+            Tasks.route -> Tasks.titleRes
+            Calendar.route -> Calendar.titleRes
+            Profile.route -> Profile.titleRes
+            Feedback.route -> Feedback.titleRes
+            FollowUs.route -> FollowUs.titleRes
+            Settings.route -> Settings.titleRes
+            else -> Calendar.titleRes
+        }
     }
 }

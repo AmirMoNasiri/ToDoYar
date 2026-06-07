@@ -7,10 +7,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.amirmonasiri.todoyar.view.screen.calendarScreen
-import com.amirmonasiri.todoyar.view.screen.profileScreen
-import com.amirmonasiri.todoyar.view.screen.tasksScreen
-
+import com.amirmonasiri.todoyar.view.screens.calendarScreen
+import com.amirmonasiri.todoyar.view.screens.feedbackScreen
+import com.amirmonasiri.todoyar.view.screens.followUsScreen
+import com.amirmonasiri.todoyar.view.screens.profileScreen
+import com.amirmonasiri.todoyar.view.screens.settingsScreen
+import com.amirmonasiri.todoyar.view.screens.tasksScreen
 
 @Composable
 fun setupNavigation(
@@ -22,8 +24,16 @@ fun setupNavigation(
         startDestination = Screens.Calendar.route,
         modifier = Modifier.padding(paddingValues)
     ) {
+        // Main Screens
         composable(route = Screens.Tasks.route) { tasksScreen(navController) }
         composable(route = Screens.Calendar.route) { calendarScreen(navController) }
         composable(route = Screens.Profile.route) { profileScreen(navController) }
+
+        // Drawer Screens
+        composable(route = Screens.Feedback.route) { feedbackScreen(navController) }
+        composable(route = Screens.FollowUs.route) { followUsScreen(navController) }
+        composable(route = Screens.Settings.route) { settingsScreen(navController) }
+
+        // TODO: other screens
     }
 }
