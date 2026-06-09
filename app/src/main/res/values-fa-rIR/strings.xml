@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">تودو یار</string>
+
+    <!--  Main Screens  -->
+
+    <!--  Drawer Screens  -->
+
+    <string name="splash">اسپلش</string>
+    <string name="feedback">بازخورد</string>
+    <string name="menu">منو</string>
+
+
     <string name="nav_tasks">وظایف</string>
     <string name="nav_calendar">تقویم</string>
     <string name="nav_profile">پروفایل</string>
@@ -27,6 +38,7 @@
     <string name="login">ورود</string>
     <string name="register">ثبت‌نام</string>
     <string name="exit_app">خروج</string>
+
     <string name="farvardin">فروردین</string>
     <string name="ordibehesht">اردیبهشت</string>
     <string name="khordar">خرداد</string>
