@@ -2,8 +2,7 @@ package com.amirmonasiri.todoyar.view.navigation
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -19,8 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.adamglin.PhosphorIcons
+import com.adamglin.phosphoricons.Duotone
+import com.adamglin.phosphoricons.duotone.DotsThreeCircle
 import com.amirmonasiri.todoyar.R
+import com.amirmonasiri.todoyar.view.ui.theme.Dimens
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,7 +59,12 @@ fun toDoYarNavHost() {
                     },
                     navigationIcon = {
                         IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                            Icon(Icons.Default.Menu, contentDescription = "Menu")
+                            Icon(
+                                imageVector = PhosphorIcons.Duotone.DotsThreeCircle,
+                                contentDescription = stringResource(R.string.menu),
+                                modifier = Modifier.size(Dimens.IconDefault),
+                                tint = MaterialTheme.colorScheme.primary
+                            )
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
