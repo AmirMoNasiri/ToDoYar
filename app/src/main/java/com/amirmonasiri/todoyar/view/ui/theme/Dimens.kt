@@ -1,8 +1,11 @@
 package com.amirmonasiri.todoyar.view.ui.theme
 
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 object Dimens {
+
+    val TitleSize = 36.sp
 
     // (Spacings / Paddings / Margins)
     val Space4 = 4.dp
