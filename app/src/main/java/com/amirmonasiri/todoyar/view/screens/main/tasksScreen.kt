@@ -1,4 +1,4 @@
-package com.amirmonasiri.todoyar.view.screens
+package com.amirmonasiri.todoyar.view.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,15 +10,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
+
 @Composable
-fun followUsScreen(navController: NavController) {
+fun tasksScreen(navController: NavController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Follow Us Screen",
+            "Tasks Screen",
             fontSize = 28.sp
         )
     }

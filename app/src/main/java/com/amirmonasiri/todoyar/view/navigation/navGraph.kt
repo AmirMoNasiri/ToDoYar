@@ -7,12 +7,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.amirmonasiri.todoyar.view.screens.calendarScreen
-import com.amirmonasiri.todoyar.view.screens.feedbackScreen
-import com.amirmonasiri.todoyar.view.screens.followUsScreen
-import com.amirmonasiri.todoyar.view.screens.profileScreen
-import com.amirmonasiri.todoyar.view.screens.settingsScreen
-import com.amirmonasiri.todoyar.view.screens.tasksScreen
+import com.amirmonasiri.todoyar.view.screens.main.calendarScreen
+import com.amirmonasiri.todoyar.view.screens.drawer.feedbackScreen
+import com.amirmonasiri.todoyar.view.screens.drawer.followUsScreen
+import com.amirmonasiri.todoyar.view.screens.main.profileScreen
+import com.amirmonasiri.todoyar.view.screens.drawer.settingsScreen
+import com.amirmonasiri.todoyar.view.screens.main.tasksScreen
 
 @Composable
 fun setupNavigation(

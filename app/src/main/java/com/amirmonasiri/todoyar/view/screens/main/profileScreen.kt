@@ -1,4 +1,4 @@
-package com.amirmonasiri.todoyar.view.screens
+package com.amirmonasiri.todoyar.view.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,16 +10,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-
 @Composable
-fun tasksScreen(navController: NavController) {
+fun profileScreen(
+    navController: NavController
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            "Tasks Screen",
+            "Profile Screen",
             fontSize = 28.sp
         )
     }
