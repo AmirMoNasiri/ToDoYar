@@ -16,19 +16,100 @@ val VazirFontFamily = FontFamily(
     Font(R.font.vazir_bold_fd, weight = FontWeight.Bold)
 )
 
-val SatoshiFontFamily = FontFamily(
-    Font(R.font.satoshi_light, weight = FontWeight.Light),
-    Font(R.font.satoshi_regular, weight = FontWeight.Normal),
-    Font(R.font.satoshi_medium, weight = FontWeight.Medium),
-    Font(R.font.satoshi_bold, weight = FontWeight.Bold),
+
+val BevellierFontFamily = FontFamily(
+    Font(R.font.bevellier_bold, weight = FontWeight.Bold),
+    Font(R.font.bevellier_light, weight = FontWeight.Light),
+    Font(R.font.bevellier_medium, weight = FontWeight.Medium),
+    Font(R.font.bevellier_regular, weight = FontWeight.Normal)
 )
 
 val Typography = Typography(
+
+    headlineLarge = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 32.sp,
+        lineHeight = 40.sp
+    ),
+    headlineMedium = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 28.sp,
+        lineHeight = 36.sp
+    ),
+    headlineSmall = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 24.sp,
+        lineHeight = 32.sp
+    ),
+
+
+    titleLarge = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp,
+        lineHeight = 28.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 18.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.15.sp
+    ),
+    titleSmall = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.1.sp
+    ),
+
+
     bodyLarge = TextStyle(
-        fontFamily = VazirFontFamily,
+        fontFamily = BevellierFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.25.sp
+    ),
+    bodySmall = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.4.sp
+    ),
+
+
+    labelLarge = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.1.sp
+    ),
+    labelMedium = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
+    ),
+    labelSmall = TextStyle(
+        fontFamily = BevellierFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 11.sp,
+        lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     )
 )
