@@ -1,19 +1,19 @@
 [versions]
 agp = "8.13.0"
-kotlin = "2.4.0"
+kotlin = "2.1.21"
 coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-appcompat = "1.7.0"
-material = "1.12.0"
+appcompat = "1.6.1"
+material = "1.10.0"
 lifecycleRuntimeKtx = "2.9.4"
 activityCompose = "1.10.1"
 composeBom = "2026.03.00"
 hilt = "2.56.2"
 ksp = "2.1.21-2.0.1"
 lottie = "6.6.6"
-coroutine = "1.11.0"
+coroutine = "1.10.2"
 room = "2.7.1"
 
 [libraries]
@@ -39,7 +39,7 @@ ksp-gradle = { group = "com.google.devtools.ksp", name = "com.google.devtools.ks
 lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutine" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutine" }
-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.8.0" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.0" }
 accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version = "0.35.0-alpha" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
