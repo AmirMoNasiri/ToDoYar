@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.amirmonasiri.todoyar.view.navigation.toDoYarNavHost
+import com.amirmonasiri.todoyar.view.navigation.MainScreen
 
 import com.amirmonasiri.todoyar.view.ui.theme.ToDoYarTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ToDoYarTheme {
-                toDoYarNavHost()
+                MainScreen()
             }
         }
     }
