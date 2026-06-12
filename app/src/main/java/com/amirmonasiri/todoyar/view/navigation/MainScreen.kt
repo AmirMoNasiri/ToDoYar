@@ -2,8 +2,11 @@ package com.amirmonasiri.todoyar.view.navigation
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -87,13 +90,14 @@ fun MainScreen() {
                 }
             }
         ) { innerPadding ->
+            val contentPadding = if (showBars) {
+                innerPadding
+            } else {
+                WindowInsets.systemBars.asPaddingValues()
+            }
             setupNavigation(
                 navController = navController,
-                paddingValues = if (showBars) {
-                    innerPadding
-                } else {
-                    PaddingValues()
-                }
+                paddingValues = contentPadding
             )
         }
     }
