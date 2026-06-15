@@ -9,7 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.amirmonasiri.todoyar.view.navigation.MainScreen
 import com.amirmonasiri.todoyar.view.ui.theme.ToDoYarTheme
-import com.amirmonasiri.todoyar.viewmodel.MainViewModel
+import com.amirmonasiri.todoyar.viewModel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
