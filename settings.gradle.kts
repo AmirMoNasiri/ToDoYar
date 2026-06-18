@@ -18,7 +18,8 @@ plugins {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven("https://maven.myket.ir")
+        maven(url = "https://maven.myket.ir")
+        maven { url = uri("https://jitpack.io") }
         google()
         mavenCentral()
     }
