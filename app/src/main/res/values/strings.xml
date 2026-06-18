@@ -74,6 +74,18 @@
     <string name="about_app">About</string>
     <string name="app_version">Version</string>
     <string name="app_description">A simple and beautiful to-do list app.</string>
-
+    <string name="dark_theme">Dark Theme</string>
+    <string name="enable_dark_theme">Enable dark theme</string>
+    <string name="language">Language</string>
+    <string name="change_language">Change language</string>
+    <string name="notifications">Notifications</string>
+    <string name="enable_notifications">Enable notifications</string>
+    <string name="delete_all_tasks">Delete all tasks</string>
+    <string name="delete_all_tasks_question">Delete all tasks?</string>
+    <string name="choose_language">Choose language</string>
+    <string name="persian">Persian</string>
+    <string name="english">English</string>
+    <string name="apply">Apply</string>
+    <string name="cannot_undone">This action cannot be undone.</string>
 
 </resources>

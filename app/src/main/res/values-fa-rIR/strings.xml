@@ -69,4 +69,28 @@
     <string name="about_app">درباره</string>
     <string name="app_version">نسخه</string>
     <string name="app_description">یک اپلیکیشن مدیریت وظایف ساده و زیبا</string>
+    <string name="dark_theme">پوسته تیره</string>
+    <string name="enable_dark_theme">فعال کردن پوسته تیره</string>
+    <string name="language">زبان</string>
+    <string name="change_language">تغییر زبان</string>
+    <string name="notifications">اعلانات</string>
+    <string name="enable_notifications">فعال کردن اعلانات</string>
+    <string name="delete_all_tasks">پاک کردن همه وظایف</string>
+    <string name="delete_all_tasks_question">آیا همه وظایف پاک شوند؟</string>
+    <string name="choose_language">انتخاب زبان</string>
+    <string name="persian">فارسی</string>
+    <string name="english">انگلیسی</string>
+    <string name="apply">تایید</string>
+    <string name="cannot_undone">این عمل قابل لغو نیست.</string>
+
+
+
+
+
+
+
+
+
+
+
 </resources>
