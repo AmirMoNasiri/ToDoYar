@@ -12,7 +12,9 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun tasksScreen(navController: NavController) {
+fun TasksScreen(
+    navController: NavController
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
