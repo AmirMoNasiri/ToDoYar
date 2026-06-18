@@ -6,86 +6,144 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.amirmonasiri.todoyar.view.screens.drawer.feedbackScreen
-import com.amirmonasiri.todoyar.view.screens.drawer.followUsScreen
-import com.amirmonasiri.todoyar.view.screens.drawer.settingsScreen
-import com.amirmonasiri.todoyar.view.screens.main.calendarScreen
-import com.amirmonasiri.todoyar.view.screens.main.profileScreen
-import com.amirmonasiri.todoyar.view.screens.main.tasksScreen
+import com.amirmonasiri.todoyar.view.screens.drawer.FeedbackScreen
+import com.amirmonasiri.todoyar.view.screens.drawer.FollowUsScreen
+import com.amirmonasiri.todoyar.view.screens.drawer.SettingsScreen
+import com.amirmonasiri.todoyar.view.screens.main.CalendarScreen
+import com.amirmonasiri.todoyar.view.screens.main.ProfileScreen
+import com.amirmonasiri.todoyar.view.screens.main.TasksScreen
+
+private const val NAV_ANIMATION_DURATION = 400
 
 @Composable
-fun setupNavigation(
+fun AppNavHost(
     navController: NavHostController,
     paddingValues: PaddingValues
 ) {
+    val layoutDirection = LocalLayoutDirection.current
+
     NavHost(
         navController = navController,
         startDestination = Screens.Calendar.route,
         modifier = Modifier.padding(paddingValues)
     ) {
-        // Main Screens
-        composable(route = Screens.Tasks.route) { tasksScreen(navController) }
-        composable(route = Screens.Calendar.route) { calendarScreen(navController) }
-        composable(route = Screens.Profile.route) { profileScreen(navController) }
 
-        // Drawer Screens
+        /*
+         * Main Screens
+         */
+
+        composable(
+            route = Screens.Tasks.route
+        ) {
+            TasksScreen(
+                navController = navController
+            )
+        }
+
+        composable(
+            route = Screens.Calendar.route
+        ) {
+            CalendarScreen(
+                navController = navController
+            )
+        }
+
+        composable(
+            route = Screens.Profile.route
+        ) {
+            ProfileScreen(
+                navController = navController
+            )
+        }
+
+        /*
+         * Drawer Screens
+         */
+        fun AnimatedContentTransitionScope<*>.enterDirection(
+            layoutDirection: LayoutDirection
+        ): AnimatedContentTransitionScope.SlideDirection {
+            return if (layoutDirection == LayoutDirection.Rtl) {
+                AnimatedContentTransitionScope.SlideDirection.Left
+            } else {
+                AnimatedContentTransitionScope.SlideDirection.Right
+            }
+        }
+
+        fun AnimatedContentTransitionScope<*>.exitDirection(
+            layoutDirection: LayoutDirection
+        ): AnimatedContentTransitionScope.SlideDirection {
+            return if (layoutDirection == LayoutDirection.Rtl) {
+                AnimatedContentTransitionScope.SlideDirection.Right
+            } else {
+                AnimatedContentTransitionScope.SlideDirection.Left
+            }
+        }
+
         composable(
             route = Screens.Feedback.route,
             enterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Right,
-                    animationSpec = tween(400)
+                    enterDirection(layoutDirection),
+                    animationSpec = tween(NAV_ANIMATION_DURATION)
                 )
             },
             popExitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left,
-                    animationSpec = tween(400)
+                    exitDirection(layoutDirection),
+                    animationSpec = tween(NAV_ANIMATION_DURATION)
                 )
             }
         ) {
-            feedbackScreen(navController)
+            FeedbackScreen(
+                navController = navController
+            )
         }
 
         composable(
             route = Screens.FollowUs.route,
             enterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Right,
-                    animationSpec = tween(400)
+                    enterDirection(layoutDirection),
+                    animationSpec = tween(NAV_ANIMATION_DURATION)
                 )
             },
             popExitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left,
-                    animationSpec = tween(400)
+                    exitDirection(layoutDirection),
+                    animationSpec = tween(NAV_ANIMATION_DURATION)
                 )
             }
         ) {
-            followUsScreen(navController)
+            FollowUsScreen(
+                navController = navController
+            )
         }
 
         composable(
             route = Screens.Settings.route,
             enterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Right,
-                    animationSpec = tween(400)
+                    enterDirection(layoutDirection),
+                    animationSpec = tween(NAV_ANIMATION_DURATION)
                 )
             },
             popExitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left,
-                    animationSpec = tween(400)
+                    exitDirection(layoutDirection),
+                    animationSpec = tween(NAV_ANIMATION_DURATION)
                 )
             }
         ) {
-            settingsScreen(navController)
+            SettingsScreen(
+                navController = navController
+            )
         }
 
-        // TODO: other screens
+        // TODO: Add other destinations here
     }
 }
