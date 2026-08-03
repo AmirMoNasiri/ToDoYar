@@ -18,7 +18,6 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class SettingsPref @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
-
     val darkTheme: Flow<Boolean> =
         context.dataStore.data.map { prefs ->
             prefs[PreferenceKeys.DARK_THEME] ?: false
