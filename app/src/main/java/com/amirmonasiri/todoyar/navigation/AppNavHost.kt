@@ -1,4 +1,4 @@
-package com.amirmonasiri.todoyar.view.navigation
+package com.amirmonasiri.todoyar.navigation
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
@@ -13,7 +13,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.amirmonasiri.todoyar.view.screens.drawer.FeedbackScreen
 import com.amirmonasiri.todoyar.view.screens.drawer.FollowUsScreen
-import com.amirmonasiri.todoyar.view.screens.drawer.SettingsScreen
 import com.amirmonasiri.todoyar.view.screens.main.CalendarScreen
 import com.amirmonasiri.todoyar.view.screens.main.ProfileScreen
 import com.amirmonasiri.todoyar.view.screens.main.TasksScreen
@@ -124,26 +123,5 @@ fun AppNavHost(
             )
         }
 
-        composable(
-            route = Screens.Settings.route,
-            enterTransition = {
-                slideIntoContainer(
-                    enterDirection(layoutDirection),
-                    animationSpec = tween(NAV_ANIMATION_DURATION)
-                )
-            },
-            popExitTransition = {
-                slideOutOfContainer(
-                    exitDirection(layoutDirection),
-                    animationSpec = tween(NAV_ANIMATION_DURATION)
-                )
-            }
-        ) {
-            SettingsScreen(
-                navController = navController
-            )
-        }
-
-        // TODO: Add other destinations here
     }
 }

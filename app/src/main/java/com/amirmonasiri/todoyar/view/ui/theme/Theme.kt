@@ -5,7 +5,6 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.amirmonasiri.todoyar.utils.AppLanguage
 
 private val DarkColorScheme = darkColorScheme(
     primary = Turquoise,
@@ -36,16 +35,13 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun ToDoYarTheme(
     darkTheme: Boolean = false,
-    language: AppLanguage,
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography(language),
+        typography = Typography,
         content = content
     )
 }

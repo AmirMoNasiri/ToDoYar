@@ -1,4 +1,4 @@
-package com.amirmonasiri.todoyar.view.navigation
+package com.amirmonasiri.todoyar.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -8,14 +8,12 @@ import com.adamglin.phosphoricons.Fill
 import com.adamglin.phosphoricons.duotone.AndroidLogo
 import com.adamglin.phosphoricons.duotone.CalendarDots
 import com.adamglin.phosphoricons.duotone.CheckSquare
-import com.adamglin.phosphoricons.duotone.Gear
 import com.adamglin.phosphoricons.duotone.Hammer
 import com.adamglin.phosphoricons.duotone.User
 import com.adamglin.phosphoricons.duotone.Users
 import com.adamglin.phosphoricons.fill.AndroidLogo
 import com.adamglin.phosphoricons.fill.CalendarDots
 import com.adamglin.phosphoricons.fill.CheckSquare
-import com.adamglin.phosphoricons.fill.Gear
 import com.adamglin.phosphoricons.fill.Hammer
 import com.adamglin.phosphoricons.fill.User
 import com.adamglin.phosphoricons.fill.Users
@@ -69,15 +67,10 @@ sealed class Screens(
         PhosphorIcons.Fill.Users
     )
 
-    object Settings : Screens(
-        "settings", R.string.settings,
-        PhosphorIcons.Duotone.Gear,
-        PhosphorIcons.Fill.Gear
-    )
 
     companion object {
         val MainScreens = listOf(Tasks, Calendar, Profile)
-        val DrawerScreens = listOf(Feedback, FollowUs, Settings)
+        val DrawerScreens = listOf(Feedback, FollowUs)
 
         fun titleResFor(route: String?): Int = when (route) {
             Tasks.route -> Tasks.titleRes
@@ -85,7 +78,6 @@ sealed class Screens(
             Profile.route -> Profile.titleRes
             Feedback.route -> Feedback.titleRes
             FollowUs.route -> FollowUs.titleRes
-            Settings.route -> Settings.titleRes
             else -> Calendar.titleRes
         }
     }
