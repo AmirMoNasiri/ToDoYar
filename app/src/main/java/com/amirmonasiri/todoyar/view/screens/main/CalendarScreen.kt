@@ -2,60 +2,49 @@ package com.amirmonasiri.todoyar.view.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.rememberDatePickerState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.amirmonasiri.todoyar.view.ui.theme.Dimens
-import java.util.Calendar
-import java.util.TimeZone
+import io.github.faridsolgi.date_picker.view.PersianDatePicker
+import io.github.faridsolgi.date_picker.view.PersianDatePickerDefaults
+import io.github.faridsolgi.date_picker.view.rememberPersianDatePickerState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CalendarScreen(navController: NavController) {
-    val datePickerState = rememberDatePickerState()
-    val selectedDateMillis = datePickerState.selectedDateMillis
-
-    val dayRange = remember(selectedDateMillis) {
-        selectedDateMillis?.let { millis ->
-            val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC")).apply {
-                timeInMillis = millis
-                set(Calendar.HOUR_OF_DAY, 0)
-                set(Calendar.MINUTE, 0)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-            }
-            val start = calendar.timeInMillis
-            calendar.add(Calendar.DAY_OF_MONTH, 1)
-            start to calendar.timeInMillis
-        }
-    }
-
+fun CalendarScreen(
+    navController: NavController,
+    contentPadding: PaddingValues
+) {
+    val state = rememberPersianDatePickerState()
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(contentPadding),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        DatePicker(
-            state = datePickerState,
+        PersianDatePicker(
+            state = state,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(Dimens.Space8),
-            showModeToggle = false,
+                .padding(
+                    horizontal = 16.dp
+                ),
             title = null,
-            colors = DatePickerDefaults.colors(
+            colors = PersianDatePickerDefaults.colors(
                 containerColor = MaterialTheme.colorScheme.background
             )
         )
+
     }
 }
