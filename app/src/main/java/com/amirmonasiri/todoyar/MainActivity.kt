@@ -5,9 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.amirmonasiri.todoyar.view.screens.MainScreen
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.navigation.compose.rememberNavController
+import com.amirmonasiri.todoyar.navigation.AppNavHost
 import com.amirmonasiri.todoyar.view.ui.theme.ToDoYarTheme
 import com.amirmonasiri.todoyar.viewModel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,9 +24,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val darkTheme by mainViewModel.darkTheme.collectAsState()
-            ToDoYarTheme(darkTheme = darkTheme) {
-                MainScreen()
+            val navController = rememberNavController()
+            CompositionLocalProvider(
+                LocalLayoutDirection provides LayoutDirection.Rtl
+            ) {
+                ToDoYarTheme(darkTheme = darkTheme) {
+                    AppNavHost(navController)
+                }
             }
+
         }
     }
 }
