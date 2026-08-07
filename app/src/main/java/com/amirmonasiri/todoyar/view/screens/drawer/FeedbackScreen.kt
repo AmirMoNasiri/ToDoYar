@@ -7,8 +7,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.amirmonasiri.todoyar.R
 
 @Composable
 fun FeedbackScreen(navController: NavController) {
@@ -18,7 +20,7 @@ fun FeedbackScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Feedback Screen",
+            text = stringResource(R.string.feedback),
             fontSize = 28.sp
         )
     }
