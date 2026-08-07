@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.amirmonasiri.todoyar.navigation.Screens
+import com.amirmonasiri.todoyar.navigation.HomeScreens
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
@@ -36,9 +36,8 @@ fun BottomNavigationBar(navController: NavController) {
             ),
         containerColor = MaterialTheme.colorScheme.background,
     ) {
-        Screens.MainScreens.forEach { screen ->
+        HomeScreens.MainScreens.forEach { screen ->
             val isSelected = currentRoute == screen.route
-
 
             val iconSize by animateDpAsState(
                 targetValue = if (isSelected) 32.dp else 20.dp,
@@ -48,40 +47,39 @@ fun BottomNavigationBar(navController: NavController) {
                 )
             )
 
-                NavigationBarItem(
-                    selected = isSelected,
-                    onClick = {
-                        navController.navigate(screen.route) {
-                            popUpTo(navController.graph.startDestinationId) {
-                                saveState = true
-                            }
-                            launchSingleTop = true
-                            restoreState = true
+            NavigationBarItem(
+                selected = isSelected,
+                onClick = {
+                    navController.navigate(screen.route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
                         }
-                    },
-                    icon = {
-                        Icon(
-
-                            imageVector = if (isSelected) screen.selectedIcon else screen.unselectedIcon,
-                            contentDescription = stringResource(screen.titleRes),
-                            modifier = Modifier.size(iconSize)
-                        )
-                    },
-                    label = {
-                        if (isSelected) {
-                            Text(
-                                text = stringResource(screen.titleRes),
-                                fontSize = 12.sp,
-                                color = MaterialTheme.colorScheme.primary
-                            )
-                        }
-                    },
-                    colors = NavigationBarItemDefaults.colors(
-                        selectedIconColor = MaterialTheme.colorScheme.primary,
-                        unselectedIconColor = MaterialTheme.colorScheme.secondary,
-                        indicatorColor = Color.Transparent
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                icon = {
+                    Icon(
+                        imageVector = if (isSelected) screen.selectedIcon else screen.unselectedIcon,
+                        contentDescription = stringResource(screen.titleRes),
+                        modifier = Modifier.size(iconSize)
                     )
+                },
+                label = {
+                    if (isSelected) {
+                        Text(
+                            text = stringResource(screen.titleRes),
+                            fontSize = 12.sp,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = MaterialTheme.colorScheme.primary,
+                    unselectedIconColor = MaterialTheme.colorScheme.primary,
+                    indicatorColor = Color.Transparent
                 )
+            )
         }
     }
 }
