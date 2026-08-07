@@ -1,91 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">To Do Yar</string>
 
+    <string name="splash">اسپلش</string>
+    <string name="feedback">بازخورد</string>
+    <string name="menu">منو</string>
+    <string name="main">اصلی</string>
+    <string name="home">خانه</string>
 
-    <string name="splash">Splash Screen</string>
+    <string name="nav_tasks">وظایف</string>
+    <string name="nav_calendar">تقویم</string>
+    <string name="nav_profile">پروفایل</string>
+    <string name="empty_tasks">هنوز وظیفه‌ای اضافه نکردید</string>
+    <string name="empty_filtered_tasks">در هیچ دسته‌بندی قرار ندارد.</string>
+    <string name="add_task">اضافه کردن وظیفه</string>
+    <string name="edit_task">تغییر وظیفه</string>
+    <string name="task_title">عنوان وظیفه</string>
+    <string name="task_description">توضیحات وظیفه (اختیاری)</string>
+    <string name="task_due_date">زمان وظیفه</string>
+    <string name="task_no_due_date">بدون زمان</string>
+    
+    <string name="task_priority">اولویت</string>
+    <string name="priority_low">پایین</string>
+    <string name="priority_medium">متوسط</string>
+    <string name="priority_high">بالا</string>
+    <string name="priority_urgent">فوری</string>
+    <string name="accept">تایید</string>
+    <string name="save">ذخیره</string>
+    <string name="cancel">لغو</string>
+    <string name="delete">پاک</string>
+    <string name="category">دسته‌بندی</string>
+    <string name="create_category">اضافه کردن درسته‌بندی جدید</string>
+    <string name="all_category">همه</string>
+    <string name="work_category">کار</string>
+    <string name="wishlist_category">آرزوها</string>
+    <string name="login">ورود</string>
+    <string name="register">ثبت‌نام</string>
+    <string name="exit_app">خروج</string>
 
-    <!-- Main Screens -->
-    <string name="nav_tasks">Tasks</string>
-    <string name="nav_calendar">Calendar</string>
-    <string name="nav_profile">Profile</string>
-
-    <!-- Drawer Screens -->
-    <string name="menu">Menu</string>
-    <string name="feedback">Feedback</string>
-    <string name="follow_us">Follow Us</string>
-    <string name="donate">Donate</string>
-    <string name="settings">Settings</string>
-
-
-    <string name="empty_tasks">No tasks yet.\nTap + to add your first task.</string>
-    <string name="empty_filtered_tasks">No tasks in this category.</string>
-    <string name="add_task">Add Task</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="task_title">Title</string>
-    <string name="task_description">Description (optional)</string>
-    <string name="task_due_date">Due date</string>
-    <string name="task_no_due_date">No due date</string>
-    <string name="task_priority">Priority</string>
-    <string name="priority_low">Low</string>
-    <string name="priority_medium">Medium</string>
-    <string name="priority_high">High</string>
-    <string name="save">Save</string>
-    <string name="cancel">Cancel</string>
-    <string name="delete">Delete</string>
-
-    <string name="category">Category</string>
-    <string name="create_category">Create New Category</string>
-    <string name="all_category">All</string>
-    <string name="work_category">Work</string>
-    <string name="wishlist_category">Wishlist</string>
-
-    <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="exit_app">Exit</string>
-
-    <!--  Jalali Months  -->
-    <string name="farvardin">Farvardin</string>
-    <string name="ordibehesht">Ordibehesht</string>
-    <string name="khordar">Khordad</string>
-    <string name="tir">Tir</string>
-    <string name="mordad">Mordad</string>
-    <string name="shahrivar">Shahrivar</string>
-    <string name="mehr">Mehr</string>
-    <string name="aban">Aban</string>
-    <string name="azar">Azar</string>
-    <string name="dey">Dey</string>
-    <string name="bahman">Bahman</string>
-    <string name="esfand">Esfand</string>
-
-    <!--  Gregorian Months  -->
-    <string name="january">January</string>
-    <string name="february">February</string>
-    <string name="march">March</string>
-    <string name="april">April</string>
-    <string name="may">May</string>
-    <string name="june">June</string>
-    <string name="july">July</string>
-    <string name="august">August</string>
-    <string name="september">September</string>
-    <string name="october">October</string>
-    <string name="november">November</string>
-    <string name="december">December</string>
-
-    <string name="about_app">About</string>
-    <string name="app_version">Version</string>
-    <string name="app_description">A simple and beautiful to-do list app.</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="enable_dark_theme">Enable dark theme</string>
-    <string name="language">Language</string>
-    <string name="change_language">Change language</string>
-    <string name="notifications">Notifications</string>
-    <string name="enable_notifications">Enable notifications</string>
-    <string name="delete_all_tasks">Delete all tasks</string>
-    <string name="delete_all_tasks_question">Delete all tasks?</string>
-    <string name="choose_language">Choose language</string>
-    <string name="persian">Persian</string>
-    <string name="english">English</string>
-    <string name="apply">Apply</string>
-    <string name="cannot_undone">This action cannot be undone.</string>
+    <string name="farvardin">فروردین</string>
+    <string name="ordibehesht">اردیبهشت</string>
+    <string name="khordar">خرداد</string>
+    <string name="tir">تیر</string>
+    <string name="mordad">مرداد</string>
+    <string name="shahrivar">شهریور</string>
+    <string name="mehr">مهر</string>
+    <string name="aban">آبان</string>
+    <string name="azar">آذر</string>
+    <string name="dey">دی</string>
+    <string name="bahman">بهمن</string>
+    <string name="esfand">اسفند</string>
+    <string name="january">ژانویه</string>
+    <string name="february">فوریه</string>
+    <string name="march">مارس</string>
+    <string name="april">آپریل</string>
+    <string name="may">می</string>
+    <string name="june">جون</string>
+    <string name="july">جولای</string>
+    <string name="august">آگست</string>
+    <string name="september">سپتامبر</string>
+    <string name="october">اکتبر</string>
+    <string name="november">نوامبر</string>
+    <string name="december">دسامبر</string>
+    <string name="follow_us">دنبال کردن ما</string>
+    <string name="donate">اهداکردن</string>
+    <string name="settings">تنظیمات</string>
+    <string name="about_app">درباره</string>
+    <string name="app_version">نسخه</string>
+    <string name="app_description">یک اپلیکیشن مدیریت وظایف ساده و زیبا</string>
+    <string name="dark_theme">پوسته تیره</string>
+    <string name="enable_dark_theme">فعال کردن پوسته تیره</string>
+    <string name="language">زبان</string>
+    <string name="change_language">تغییر زبان</string>
+    <string name="notifications">اعلانات</string>
+    <string name="enable_notifications">فعال کردن اعلانات</string>
+    <string name="delete_all_tasks">پاک کردن همه وظایف</string>
+    <string name="delete_all_tasks_question">آیا همه وظایف پاک شوند؟</string>
+    <string name="choose_language">انتخاب زبان</string>
+    <string name="persian">فارسی</string>
+    <string name="english">انگلیسی</string>
+    <string name="apply">تایید</string>
+    <string name="cannot_undone">این عمل قابل لغو نیست.</string>
 
 </resources>
