@@ -23,12 +23,16 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.adamglin.PhosphorIcons
@@ -36,8 +40,9 @@ import com.adamglin.phosphoricons.Duotone
 import com.adamglin.phosphoricons.duotone.List
 import com.adamglin.phosphoricons.duotone.PencilSimple
 import com.amirmonasiri.todoyar.R
-import com.amirmonasiri.todoyar.navigation.AppNavHost
-import com.amirmonasiri.todoyar.navigation.Screens
+import com.amirmonasiri.todoyar.navigation.HomeNavHost
+import com.amirmonasiri.todoyar.navigation.HomeScreens
+import com.amirmonasiri.todoyar.view.screens.component.AddTaskBottomSheet
 import com.amirmonasiri.todoyar.view.screens.component.BottomNavigationBar
 import com.amirmonasiri.todoyar.view.screens.component.DrawerContent
 import com.amirmonasiri.todoyar.view.ui.theme.Dimens
@@ -45,22 +50,38 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
-    val navController = rememberNavController()
+fun MainScreen(
+    navController: NavHostController
+) {
+    val homeNavController = rememberNavController()
+
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
-    val showBars = currentRoute in Screens.MainScreens.map { it.route }
-    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-    val fabPosition = if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
-        FabPosition.End
-    } else {
-        FabPosition.Start
+
+    // Home Navigation
+    val homeBackStackEntry by homeNavController.currentBackStackEntryAsState()
+    val currentRoute = homeBackStackEntry?.destination?.route
+
+    val showBars = currentRoute in HomeScreens.MainScreens.map { it.route }
+
+    val sheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true
+    )
+
+    var showBottomSheet by rememberSaveable {
+        mutableStateOf(false)
     }
 
+    val fabPosition =
+        if (LocalLayoutDirection.current == LayoutDirection.Ltr)
+            FabPosition.End
+        else
+            FabPosition.Start
+
     BackHandler(enabled = drawerState.isOpen) {
-        scope.launch { drawerState.close() }
+        scope.launch {
+            drawerState.close()
+        }
     }
 
     ModalNavigationDrawer(
@@ -73,7 +94,6 @@ fun MainScreen() {
                 scope = scope
             )
         }
-
     ) {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
@@ -103,20 +123,25 @@ fun MainScreen() {
                     )
                 }
             },
+
             bottomBar = {
                 if (showBars) {
-                    BottomNavigationBar(navController = navController)
+                    BottomNavigationBar(
+                        navController = homeNavController
+                    )
                 }
             },
             floatingActionButtonPosition = fabPosition,
             floatingActionButton = {
-                AnimatedVisibility(visible = showBars) {
+                AnimatedVisibility(showBars) {
                     FloatingActionButton(
-                        onClick = { },
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.onPrimary,
+                        onClick = {
+                            showBottomSheet = true
+                        },
                         shape = CircleShape,
-                        modifier = Modifier.size(64.dp)
+                        modifier = Modifier.size(64.dp),
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.onPrimary
                     ) {
                         Icon(
                             imageVector = PhosphorIcons.Duotone.PencilSimple,
@@ -126,16 +151,29 @@ fun MainScreen() {
                     }
                 }
             }
+
         ) { innerPadding ->
-            val contentPadding = if (showBars) {
-                innerPadding
-            } else {
-                WindowInsets.systemBars.asPaddingValues()
-            }
-            AppNavHost(
-                navController = navController,
-                paddingValues = contentPadding
+
+            val contentPadding =
+                if (showBars)
+                    innerPadding
+                else
+                    WindowInsets.systemBars.asPaddingValues()
+
+            HomeNavHost(
+                navController = homeNavController,
+                contentPadding = contentPadding
             )
+
+
+            if (showBottomSheet) {
+                AddTaskBottomSheet(
+                    sheetState = sheetState,
+                    onDismiss = {
+                        showBottomSheet = false
+                    }
+                )
+            }
         }
     }
 }
