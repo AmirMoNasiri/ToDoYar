@@ -5,7 +5,6 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
-import com.amirmonasiri.todoyar.utils.AppLanguage
 import com.amirmonasiri.todoyar.utils.Constants
 import com.amirmonasiri.todoyar.utils.PreferenceKeys
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -23,13 +22,6 @@ class SettingsPref @Inject constructor(
             prefs[PreferenceKeys.DARK_THEME] ?: false
         }
 
-    val language: Flow<AppLanguage> =
-        context.dataStore.data.map { prefs ->
-            AppLanguage.valueOf(
-                prefs[PreferenceKeys.LANGUAGE]
-                    ?: AppLanguage.ENGLISH.name
-            )
-        }
 
 
     suspend fun setDarkTheme(enabled: Boolean) {
@@ -38,9 +30,4 @@ class SettingsPref @Inject constructor(
         }
     }
 
-    suspend fun setLanguage(language: AppLanguage) {
-        context.dataStore.edit { prefs ->
-            prefs[PreferenceKeys.LANGUAGE] = language.name
-        }
-    }
 }
