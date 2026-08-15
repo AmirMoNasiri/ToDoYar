@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.amirmonasiri.todoyar"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -47,6 +47,7 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material3)
     implementation(libs.material)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -67,6 +68,12 @@ dependencies {
     implementation(libs.datastore.preferences)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.work.runtime)
+    implementation(libs.hilt.work)
+    ksp(libs.hilt.work.compiler)
+    implementation("com.patrykandpatrick.vico:core:2.0.1")
+    implementation("com.patrykandpatrick.vico:compose:2.0.1")
+    implementation("com.patrykandpatrick.vico:compose-m3:2.0.1")
     implementation("com.adamglin:phosphor-icon:1.0.0")
     implementation("io.github.faridsolgi:persian-date-picker:0.0.14")
     implementation("io.github.faridsolgi:persianDateTime:0.2.2")
