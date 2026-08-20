@@ -8,22 +8,30 @@ import com.amirmonasiri.todoyar.view.screens.MainScreen
 import com.amirmonasiri.todoyar.view.screens.SplashScreen
 import com.amirmonasiri.todoyar.view.screens.drawer.FeedbackScreen
 import com.amirmonasiri.todoyar.view.screens.drawer.FollowUsScreen
-import com.amirmonasiri.todoyar.view.screens.main.CalendarScreen
-import com.amirmonasiri.todoyar.view.screens.main.ProfileScreen
-import com.amirmonasiri.todoyar.view.screens.main.TasksScreen
+import com.amirmonasiri.todoyar.view.screens.drawer.ManageCategoriesScreen
 
-
+/**
+ * Root navigation graph of the application.
+ *
+ * Responsible for navigation between top-level screens such as:
+ * - Splash
+ * - Main container
+ * - Drawer destinations
+ *
+ * This is the entry point of Navigation Compose.
+ */
 @Composable
 fun AppNavHost(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screens.Splash.route,
+        startDestination = AppScreens.Splash.route,
     ) {
-        composable(Screens.Splash.route) { SplashScreen(navController) }
-        composable(Screens.Main.route) { MainScreen(navController) }
+        composable(AppScreens.Splash.route) { SplashScreen(navController) }
+        composable(AppScreens.Main.route) { MainScreen(navController) }
 
         // Drawer Screens
-        composable(Screens.Feedback.route) { FeedbackScreen(navController) }
-        composable(Screens.FollowUs.route) { FollowUsScreen(navController) }
+        composable(AppScreens.ManageCategories.route) { ManageCategoriesScreen(navController) }
+        composable(AppScreens.Feedback.route) { FeedbackScreen(navController) }
+        composable(AppScreens.FollowUs.route) { FollowUsScreen(navController) }
     }
 }

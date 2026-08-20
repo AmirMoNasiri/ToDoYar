@@ -14,6 +14,17 @@ import com.adamglin.phosphoricons.fill.CheckSquare
 import com.adamglin.phosphoricons.fill.User
 import com.amirmonasiri.todoyar.R
 
+/**
+ * Defines all destinations that belong to the main section of the app.
+ *
+ * These screens are displayed inside [HomeNavHost] and are used
+ * by the Bottom Navigation Bar and Profile section.
+ *
+ * Each destination contains:
+ * - route used by Navigation Compose
+ * - title string resource
+ * - selected / unselected icons
+ */
 sealed class HomeScreens(
     val route: String,
     val titleRes: Int,
@@ -34,7 +45,6 @@ sealed class HomeScreens(
         PhosphorIcons.Fill.CalendarDots
     )
 
-    // Drawer Screens
     object Profile : HomeScreens(
         "profile",
         R.string.nav_profile,
@@ -43,6 +53,11 @@ sealed class HomeScreens(
     )
 
     companion object {
+        /**
+         * Screens displayed in the main navigation area.
+         *
+         * Used to build the Bottom Navigation Bar.
+         */
         val MainScreens = listOf(Tasks, Calendar, Profile)
     }
 }
