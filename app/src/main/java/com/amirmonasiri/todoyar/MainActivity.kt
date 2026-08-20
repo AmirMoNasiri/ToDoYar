@@ -13,17 +13,17 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.compose.rememberNavController
 import com.amirmonasiri.todoyar.navigation.AppNavHost
 import com.amirmonasiri.todoyar.view.ui.theme.ToDoYarTheme
-import com.amirmonasiri.todoyar.viewModel.MainViewModel
+import com.amirmonasiri.todoyar.viewModel.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val mainViewModel: MainViewModel by viewModels()
+    private val settingsViewModell: SettingsViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val darkTheme by mainViewModel.darkTheme.collectAsState()
+            val darkTheme by settingsViewModell.isDarkTheme.collectAsState()
             val navController = rememberNavController()
             CompositionLocalProvider(
                 LocalLayoutDirection provides LayoutDirection.Rtl
@@ -36,3 +36,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
