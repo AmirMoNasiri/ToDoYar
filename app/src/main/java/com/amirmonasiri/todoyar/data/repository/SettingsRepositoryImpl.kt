@@ -5,16 +5,21 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * Default implementation of [SettingsRepository].
+ *
+ * Uses Jetpack DataStore as the local source
+ * for storing and retrieving application settings.
+ */
 @Singleton
 class SettingsRepositoryImpl @Inject constructor(
     private val settingsPref: SettingsPref
 ) : SettingsRepository {
-
     override val darkTheme: Flow<Boolean> =
         settingsPref.darkTheme
 
     override suspend fun setDarkTheme(enabled: Boolean) {
         settingsPref.setDarkTheme(enabled)
     }
-
 }
+

@@ -9,6 +9,15 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel responsible for application settings.
+ *
+ * Currently manages:
+ * - Theme preference (Light / Dark mode)
+ *
+ * Acts as a bridge between the UI layer and
+ * [SettingsRepository].
+ */
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository
@@ -17,7 +26,7 @@ class SettingsViewModel @Inject constructor(
     val isDarkTheme = settingsRepository.darkTheme
         .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
+            started = SharingStarted.Eagerly,
             initialValue = false
         )
 
