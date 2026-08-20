@@ -9,9 +9,15 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * Provides Settings DataStore dependencies.
+ *
+ * Responsible for creating and exposing
+ * SettingsPref as a singleton instance.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
-object SettingsDataStoreModule {
+object DataStoreModule {
 
     @Provides
     @Singleton
