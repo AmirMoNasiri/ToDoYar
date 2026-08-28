@@ -27,27 +27,27 @@ import com.amirmonasiri.todoyar.R
  */
 sealed class HomeScreens(
     val route: String,
-    val titleRes: Int,
+    val titleRes: String,
     val unselectedIcon: ImageVector = PhosphorIcons.Duotone.AndroidLogo,
     val selectedIcon: ImageVector = PhosphorIcons.Fill.AndroidLogo
 ) {
     object Tasks : HomeScreens(
         "tasks",
-        R.string.nav_tasks,
+        "وظایف",
         PhosphorIcons.Duotone.CheckSquare,
         PhosphorIcons.Fill.CheckSquare
     )
 
     object Calendar : HomeScreens(
         "calendar",
-        R.string.nav_calendar,
+        "تقویم",
         PhosphorIcons.Duotone.CalendarDots,
         PhosphorIcons.Fill.CalendarDots
     )
 
     object Profile : HomeScreens(
         "profile",
-        R.string.nav_profile,
+        "پروفایل",
         PhosphorIcons.Duotone.User,
         PhosphorIcons.Fill.User
     )

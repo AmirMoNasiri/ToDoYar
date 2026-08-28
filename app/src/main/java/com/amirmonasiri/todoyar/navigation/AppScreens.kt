@@ -12,7 +12,6 @@ import com.adamglin.phosphoricons.fill.AndroidLogo
 import com.adamglin.phosphoricons.fill.Hammer
 import com.adamglin.phosphoricons.fill.SquaresFour
 import com.adamglin.phosphoricons.fill.Users
-import com.amirmonasiri.todoyar.R
 
 /**
  * Defines all top-level destinations of the application.
@@ -26,28 +25,28 @@ import com.amirmonasiri.todoyar.R
  */
 sealed class AppScreens(
     val route: String,
-    val titleRes: Int,
+    val titleRes: String,
     val unselectedIcon: ImageVector = PhosphorIcons.Duotone.AndroidLogo,
     val selectedIcon: ImageVector = PhosphorIcons.Fill.AndroidLogo
 ) {
-    object Splash : AppScreens("splash", R.string.splash)
-    object Main : AppScreens("main", R.string.main)
+    object Splash : AppScreens("splash", "اسپلش")
+    object Main : AppScreens("main", "اصلی")
     object ManageCategories : AppScreens(
         "manage_categories",
-        R.string.manage_categories,
+        "مدیریت دسته بندی ها",
         PhosphorIcons.Duotone.SquaresFour,
         PhosphorIcons.Fill.SquaresFour
     )
 
     object Feedback : AppScreens(
         "feedback",
-        R.string.feedback,
+        "بازخورد",
         PhosphorIcons.Duotone.Hammer,
         PhosphorIcons.Fill.Hammer
     )
 
     object FollowUs : AppScreens(
-        "followUs", R.string.follow_us,
+        "followUs", "ارتباط با ما",
         PhosphorIcons.Duotone.Users,
         PhosphorIcons.Fill.Users
     )
