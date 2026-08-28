@@ -20,6 +20,8 @@ private val Context.dataStore: DataStore<Preferences>
         )
 private const val SETTINGS_DATASTORE = "settings_prefs"
 val DARK_THEME = booleanPreferencesKey("dark_theme")
+val NOTIFICATION_ENABLED = booleanPreferencesKey("notification_enabled")
+
 
 
 /**
@@ -53,6 +55,27 @@ class SettingsPref @Inject constructor(
     suspend fun setDarkTheme(enabled: Boolean) {
         context.dataStore.edit { prefs ->
             prefs[DARK_THEME] = enabled
+        }
+    }
+
+
+    /**
+     * Emits the current notification enable state.
+     * true  -> notifications are enabled
+     * false -> notifications are disabled
+     */
+    val notificationEnabled: Flow<Boolean> =
+        context.dataStore.data.map { prefs ->
+            prefs[NOTIFICATION_ENABLED] ?: true // پیش‌فرض: true
+        }
+
+    /**
+     * Persists the user's notification preference.
+     * @param enabled true to enable notifications, false to disable.
+     */
+    suspend fun setNotificationEnabled(enabled: Boolean) {
+        context.dataStore.edit { prefs ->
+            prefs[NOTIFICATION_ENABLED] = enabled
         }
     }
 

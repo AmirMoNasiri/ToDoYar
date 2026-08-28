@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import com.amirmonasiri.todoyar.data.repository.SettingsRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.flow.first
 
 /**
  * WorkManager worker responsible for displaying
@@ -19,6 +21,7 @@ import dagger.assisted.AssistedInject
 class TaskReminderWorker @AssistedInject constructor(
     @Assisted context: Context,
     @Assisted params: WorkerParameters,
+    private val settingsRepository: SettingsRepository
 ) : CoroutineWorker(context, params) {
 
     /**
@@ -34,6 +37,10 @@ class TaskReminderWorker @AssistedInject constructor(
         val message =
             inputData.getString(ReminderWorkerKeys.MESSAGE)
                 ?: ""
+        val isNotificationEnabled = settingsRepository.notificationEnabled.first()
+        if (!isNotificationEnabled) {
+            return Result.success()
+        }
 
         TaskNotificationManager.showTaskNotification(
             context = applicationContext,
