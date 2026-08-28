@@ -19,47 +19,65 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.amirmonasiri.todoyar.BuildConfig
 import com.amirmonasiri.todoyar.R
-import com.amirmonasiri.todoyar.navigation.Screens
+import com.amirmonasiri.todoyar.navigation.AppScreens
+import com.amirmonasiri.todoyar.view.ui.theme.Dimens
 import com.amirmonasiri.todoyar.view.ui.theme.PersianBlue
 import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
 
+/**
+ * Splash screen displayed when the application starts.
+ *
+ * Responsibilities:
+ * - Displays the application logo and loading indicator.
+ * - Provides a short startup delay for branding purposes.
+ * - Navigates to the main screen after initialization.
+ */
 @Composable
 fun SplashScreen(navController: NavController) {
+
+    /*
+    Navigate to the main screen after a short delay
+    and remove SplashScreen from the back stack
+    */
     LaunchedEffect(Unit) {
-        delay(2000)
-        navController.navigate(Screens.Main.route) {
-            popUpTo(Screens.Splash.route) {
+        delay(2000.milliseconds)
+        navController.navigate(AppScreens.Main.route) {
+            popUpTo(AppScreens.Splash.route) {
                 inclusive = true
             }
         }
     }
-
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(PersianBlue),
     ) {
         Image(
-            painter = painterResource(R.drawable.ic_todoyar_noback),
+            painter = painterResource(
+                id = R.drawable.ic_todoyar_noback
+            ),
             contentDescription = "To Do Yar Icon",
             modifier = Modifier
-                .size(160.dp)
+                .size(Dimens.IconSplash)
                 .align(Alignment.Center)
         )
         Column(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 48.dp),
+                .padding(bottom = Dimens.BottomSpace),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CircularProgressIndicator(
-                modifier = Modifier.size(32.dp), color = Color.White, strokeWidth = 3.dp
+                modifier = Modifier.size(Dimens.CPISize),
+                color = Color.White,
+                strokeWidth = Dimens.CPIStrokeSize
             )
-
             Spacer(modifier = Modifier.height(32.dp))
             Text(
-                text = "نسخه 1.0.0",
+                text = "نسخه ${BuildConfig.VERSION_NAME}",
                 color = Color.White,
             )
         }
