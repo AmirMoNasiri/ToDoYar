@@ -7,6 +7,7 @@ import com.amirmonasiri.todoyar.data.repository.TaskRepository
 import com.amirmonasiri.todoyar.model.Category
 import com.amirmonasiri.todoyar.model.Task
 import com.amirmonasiri.todoyar.model.TaskPriority
+import com.amirmonasiri.todoyar.notification.TaskReminderScheduler
 import com.amirmonasiri.todoyar.utils.WeeklyActivityCalculator
 import com.amirmonasiri.todoyar.view.event.TaskUiEvent
 import com.amirmonasiri.todoyar.view.state.TaskUiState
@@ -33,7 +34,8 @@ import javax.inject.Inject
 @HiltViewModel
 class TaskViewModel @Inject constructor(
     private val repository: TaskRepository,
-    private val categoryRepository: CategoryRepository
+    private val categoryRepository: CategoryRepository,
+    private val reminderScheduler: TaskReminderScheduler
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(TaskUiState())
     val uiState = _uiState.asStateFlow()
@@ -79,6 +81,7 @@ class TaskViewModel @Inject constructor(
             }
         }
     }
+
     /**
      * Observes category updates from the repository.
      *
@@ -102,6 +105,7 @@ class TaskViewModel @Inject constructor(
             }
         }
     }
+
     /**
      * Inserts predefined categories during application startup.
      *
@@ -112,6 +116,7 @@ class TaskViewModel @Inject constructor(
             categoryRepository.insertDefaultCategories()
         }
     }
+
     /**
      * Central entry point for handling UI events.
      *
@@ -123,24 +128,31 @@ class TaskViewModel @Inject constructor(
             is TaskUiEvent.TitleChanged -> {
                 _uiState.update { it.copy(title = event.title) }
             }
+
             is TaskUiEvent.DescriptionChanged -> {
                 _uiState.update { it.copy(description = event.description) }
             }
+
             is TaskUiEvent.DateChanged -> {
                 _uiState.update { it.copy(dueDate = event.date) }
             }
+
             is TaskUiEvent.TimeChanged -> {
                 _uiState.update { it.copy(dueTime = event.time) }
             }
+
             is TaskUiEvent.PriorityChanged -> {
                 _uiState.update { it.copy(priority = event.priority) }
             }
+
             is TaskUiEvent.SaveTask -> {
                 addTask()
             }
+
             is TaskUiEvent.UpdateTask -> {
                 updateTask(event.task)
             }
+
             is TaskUiEvent.EditTask -> {
                 _uiState.update {
                     it.copy(
@@ -153,13 +165,18 @@ class TaskViewModel @Inject constructor(
                     )
                 }
             }
+
             is TaskUiEvent.DeleteTask -> {
+
                 deleteTask(event.task)
             }
+
             is TaskUiEvent.ClearForm -> {
                 clearForm()
             }
+
             is TaskUiEvent.CompletedChanged -> {
+
                 val updatedTask = event.task.copy(
                     isCompleted = event.isCompleted,
                     completedAt =
@@ -170,9 +187,15 @@ class TaskViewModel @Inject constructor(
                 )
 
                 viewModelScope.launch {
+                    if (event.isCompleted) {
+                        reminderScheduler.cancelTaskReminder(event.task.id)
+                    } else {
+                        reminderScheduler.scheduleTaskReminder(updatedTask)
+                    }
                     repository.updateTask(updatedTask)
                 }
             }
+
             is TaskUiEvent.PriorityFilterChanged -> {
                 _uiState.update {
                     it.copy(selectedPriorityFilter = event.priority)
@@ -183,14 +206,17 @@ class TaskViewModel @Inject constructor(
             is TaskUiEvent.AddCategory -> {
                 addCategory(event.name)
             }
+
             is TaskUiEvent.DeleteCategory -> {
                 deleteCategory(event.categoryId)
             }
+
             is TaskUiEvent.CategoryChanged -> {
                 _uiState.update {
                     it.copy(categoryId = event.categoryId)
                 }
             }
+
             is TaskUiEvent.CategoryFilterChanged -> {
                 _uiState.update {
                     it.copy(selectedCategoryFilter = event.categoryId)
@@ -222,16 +248,28 @@ class TaskViewModel @Inject constructor(
 
         viewModelScope.launch {
             repository.addTask(task)
+            reminderScheduler.scheduleTaskReminder(task)
             clearForm()
         }
     }
 
     private fun deleteTask(task: Task) {
-        viewModelScope.launch { repository.deleteTask(task) }
+        viewModelScope.launch {
+            reminderScheduler.cancelTaskReminder(task.id)
+            repository.deleteTask(task)
+        }
+
     }
 
     private fun updateTask(task: Task) {
-        viewModelScope.launch { repository.updateTask(task) }
+        viewModelScope.launch {
+            reminderScheduler.cancelTaskReminder(task.id)
+
+            repository.updateTask(task)
+            if (!task.isCompleted) {
+                reminderScheduler.scheduleTaskReminder(task)
+            }
+        }
     }
 
     private fun addCategory(name: String) {
