@@ -26,4 +26,19 @@ interface SettingsRepository {
      */
     suspend fun setDarkTheme(enabled: Boolean)
 
+
+
+    /**
+     * Emits the current notification preference.
+     * true  -> Notifications enabled
+     * false -> Notifications disabled
+     */
+    val notificationEnabled: Flow<Boolean>
+
+    /**
+     * Persists the user's notification preference.
+     * @param enabled true to enable notifications, false to disable.
+     */
+    suspend fun setNotificationEnabled(enabled: Boolean)
+
 }

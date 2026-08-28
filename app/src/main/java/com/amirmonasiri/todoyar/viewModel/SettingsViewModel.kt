@@ -37,4 +37,25 @@ class SettingsViewModel @Inject constructor(
     }
 
 
+    val isNotificationEnabled = settingsRepository.notificationEnabled
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Eagerly,
+            initialValue = true
+        )
+
+    fun setNotificationEnabled(enabled: Boolean) {
+        viewModelScope.launch {
+            settingsRepository.setNotificationEnabled(enabled)
+        }
+    }
+
+    fun toggleNotification() {
+        viewModelScope.launch {
+            val current = isNotificationEnabled.value
+            setNotificationEnabled(!current)
+        }
+    }
+
+
 }

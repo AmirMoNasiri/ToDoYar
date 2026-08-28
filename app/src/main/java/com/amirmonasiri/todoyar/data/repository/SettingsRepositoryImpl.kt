@@ -21,5 +21,11 @@ class SettingsRepositoryImpl @Inject constructor(
     override suspend fun setDarkTheme(enabled: Boolean) {
         settingsPref.setDarkTheme(enabled)
     }
+    override val notificationEnabled: Flow<Boolean> =
+        settingsPref.notificationEnabled
+
+    override suspend fun setNotificationEnabled(enabled: Boolean) {
+        settingsPref.setNotificationEnabled(enabled)
+    }
 }
 
