@@ -2,36 +2,43 @@ package com.amirmonasiri.todoyar.view.ui.theme
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.random.Random
 
 object Dimens {
 
+    // Size
     val TitleSize = 36.sp
 
+
+    val ProfileImageSize = 100.dp
+
+    // Circular Progress Indicator
+    val CPISize = 32.dp
+    val CPIStrokeSize = 3.dp
+
+
+
     // (Spacings / Paddings / Margins)
-    val Space4 = 4.dp
-    val Space8 = 8.dp
-    val Space12 = 12.dp
+    val BottomSpace = 64.dp
     val Space16 = 16.dp
-    val Space20 = 20.dp
-    val Space24 = 24.dp
-    val Space32 = 32.dp
 
     // Icons
-    val IconSmall = 16.dp
     val IconDefault = 24.dp
-    val IconMedium = 32.dp
-    val IconLarge = 48.dp
-    val IconBottomBar = 36.dp
+    val IconSmall = 16.dp
+    val IconMedium = 20.dp
+    val IconRegular = 32.dp
+    val IconLarge = 64.dp
+
+    val IconSplash = 160.dp
+    // Floating Action Button
+    val FABSize = 64.dp
+    val IconFABSize = 28.dp
 
     // Components Height
-    val BottomBarHeight = 80.dp
-    val TopBarHeight = 56.dp
-    val ButtonHeight = 48.dp
-
-    // Corner Radius
-    val CornerSmall = 4.dp
-    val CornerMedium = 8.dp
-    val CornerLarge = 12.dp
-    val CornerExtraLarge = 16.dp
     val CornerBottomSheet = 20.dp
+    val Corner = 18.dp
+    val CornerBadge = 10.dp
+
+    // Elevation
+    val DefaultElevation = 2.dp
 }

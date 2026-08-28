@@ -31,7 +31,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -42,17 +41,15 @@ import com.adamglin.phosphoricons.duotone.PencilSimple
 import com.amirmonasiri.todoyar.R
 import com.amirmonasiri.todoyar.navigation.HomeNavHost
 import com.amirmonasiri.todoyar.navigation.HomeScreens
-import com.amirmonasiri.todoyar.view.screens.component.AddTaskBottomSheet
 import com.amirmonasiri.todoyar.view.screens.component.BottomNavigationBar
 import com.amirmonasiri.todoyar.view.screens.component.DrawerContent
+import com.amirmonasiri.todoyar.view.screens.component.TaskBottomSheet
 import com.amirmonasiri.todoyar.view.ui.theme.Dimens
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(
-    navController: NavHostController
-) {
+fun MainScreen(navController: NavHostController) {
     val homeNavController = rememberNavController()
 
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -86,7 +83,7 @@ fun MainScreen(
 
     ModalNavigationDrawer(
         drawerState = drawerState,
-        gesturesEnabled = true,
+        gesturesEnabled = drawerState.isOpen,
         drawerContent = {
             DrawerContent(
                 navController = navController,
@@ -139,14 +136,14 @@ fun MainScreen(
                             showBottomSheet = true
                         },
                         shape = CircleShape,
-                        modifier = Modifier.size(64.dp),
+                        modifier = Modifier.size(Dimens.FABSize),
                         containerColor = MaterialTheme.colorScheme.primary,
                         contentColor = MaterialTheme.colorScheme.onPrimary
                     ) {
                         Icon(
                             imageVector = PhosphorIcons.Duotone.PencilSimple,
                             contentDescription = stringResource(R.string.add_task),
-                            modifier = Modifier.size(28.dp)
+                            modifier = Modifier.size(Dimens.IconFABSize)
                         )
                     }
                 }
@@ -167,7 +164,7 @@ fun MainScreen(
 
 
             if (showBottomSheet) {
-                AddTaskBottomSheet(
+                TaskBottomSheet(
                     sheetState = sheetState,
                     onDismiss = {
                         showBottomSheet = false
