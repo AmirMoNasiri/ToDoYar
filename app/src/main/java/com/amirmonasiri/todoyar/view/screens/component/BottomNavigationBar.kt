@@ -21,9 +21,25 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.amirmonasiri.todoyar.navigation.HomeScreens
+import com.amirmonasiri.todoyar.view.ui.theme.Dimens
 
+/**
+ * Bottom navigation bar for the main sections of the application.
+ *
+ * Displays all items defined in [HomeScreens.MainScreens] and
+ * highlights the currently selected destination.
+ *
+ * Features:
+ * - Animated icon scaling for the selected item
+ * - State restoration between destinations
+ * - Single top navigation behavior
+ *
+ * @param navController Navigation controller used for screen navigation.
+ */
 @Composable
 fun BottomNavigationBar(navController: NavController) {
+
+    // Current destination from Navigation back stack
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStackEntry?.destination?.route
 
@@ -31,16 +47,20 @@ fun BottomNavigationBar(navController: NavController) {
         modifier = Modifier
             .shadow(
                 elevation = 24.dp,
-                shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+                shape = RoundedCornerShape(
+                    topStart = Dimens.Corner,
+                    topEnd = Dimens.Corner
+                ),
                 clip = false
             ),
         containerColor = MaterialTheme.colorScheme.background,
     ) {
+        // Render all main navigation destinations
         HomeScreens.MainScreens.forEach { screen ->
             val isSelected = currentRoute == screen.route
 
             val iconSize by animateDpAsState(
-                targetValue = if (isSelected) 32.dp else 20.dp,
+                targetValue = if (isSelected) Dimens.IconRegular else Dimens.IconMedium,
                 animationSpec = spring(
                     dampingRatio = 0.5f,
                     stiffness = 400f
@@ -60,15 +80,16 @@ fun BottomNavigationBar(navController: NavController) {
                 },
                 icon = {
                     Icon(
-                        imageVector = if (isSelected) screen.selectedIcon else screen.unselectedIcon,
-                        contentDescription = stringResource(screen.titleRes),
+                        imageVector = if (isSelected) screen.selectedIcon
+                        else screen.unselectedIcon,
+                        contentDescription = screen.titleRes,
                         modifier = Modifier.size(iconSize)
                     )
                 },
                 label = {
                     if (isSelected) {
                         Text(
-                            text = stringResource(screen.titleRes),
+                            text = screen.titleRes,
                             fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.primary
                         )
