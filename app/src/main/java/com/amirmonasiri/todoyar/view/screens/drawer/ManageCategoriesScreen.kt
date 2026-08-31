@@ -404,7 +404,9 @@ private fun CategoryItem(
 
                     Icon(
                         imageVector = PhosphorIcons.Duotone.PencilSimple,
-                        contentDescription = "ویرایش"
+                        contentDescription = "ویرایش",
+                        tint = MaterialTheme.colorScheme.primary
+
                     )
                 }
 
