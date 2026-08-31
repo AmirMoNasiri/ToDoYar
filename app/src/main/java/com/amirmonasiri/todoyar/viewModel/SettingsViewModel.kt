@@ -52,8 +52,7 @@ class SettingsViewModel @Inject constructor(
 
     fun toggleNotification() {
         viewModelScope.launch {
-            val current = isNotificationEnabled.value
-            setNotificationEnabled(!current)
+            setNotificationEnabled(!isNotificationEnabled.value)
         }
     }
 

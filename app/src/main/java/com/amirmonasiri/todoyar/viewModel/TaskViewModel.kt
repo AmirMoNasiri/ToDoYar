@@ -248,7 +248,7 @@ class TaskViewModel @Inject constructor(
 
         viewModelScope.launch {
             repository.addTask(task)
-            reminderScheduler.scheduleTaskReminder(task)
+//            reminderScheduler.scheduleTaskReminder(task)
             clearForm()
         }
     }

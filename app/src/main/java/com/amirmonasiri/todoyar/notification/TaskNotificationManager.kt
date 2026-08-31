@@ -68,14 +68,14 @@ object TaskNotificationManager {
                     PendingIntent.FLAG_IMMUTABLE
         )
 
-        if (
-            ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
+//        if (
+//            ContextCompat.checkSelfPermission(
+//                context,
+//                Manifest.permission.POST_NOTIFICATIONS
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            return
+//        }
 
         val notification = NotificationCompat.Builder(
             context,
