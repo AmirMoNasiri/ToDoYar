@@ -8,31 +8,26 @@ import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 /**
- * Application entry point.
- *
- * Responsible for:
- * - Initializing Hilt dependency injection.
- * - Providing WorkManager configuration.
- * - Creating notification channels on app startup.
+ * Application entry point:
+ * - Bootstraps Hilt dependency injection.
+ * - Provides WorkManager configuration with Hilt-aware WorkerFactory.
+ * - Creates notification channels on startup.
  */
 @HiltAndroidApp
 class Application : Application(), Configuration.Provider {
 
-    /**
-     * Hilt-aware WorkerFactory used by WorkManager
-     * to create workers with dependency injection.
-     */
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
-    /**
-     * Initializes application-wide components.
-     */
     override fun onCreate() {
         super.onCreate()
-        NotificationHelper.notificationChannelProvider(this)
+        NotificationHelper.createNotificationChannels(this)
     }
 
+    /**
+     * WorkManager is initialized lazily on first access.
+     * The [HiltWorkerFactory] allows `@HiltWorker` classes to receive dependencies.
+     */
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder()
             .setWorkerFactory(workerFactory)
