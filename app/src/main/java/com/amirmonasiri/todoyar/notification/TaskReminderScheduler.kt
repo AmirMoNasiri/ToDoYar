@@ -20,101 +20,62 @@ object ReminderWorkerKeys {
     const val MESSAGE = "message"
 }
 
-/**
- * Responsible for scheduling and cancelling
- * task reminder notifications using WorkManager.
- *
- * A reminder is scheduled based on the task due date
- * and/or due time and will trigger a TaskReminderWorker
- * at the calculated time.
- */
 @Singleton
 class TaskReminderScheduler @Inject constructor(
     @ApplicationContext
     private val context: Context
 ) {
-    /**
-     * Calculates the exact reminder timestamp in milliseconds.
-     *
-     * Supported cases:
-     * - Date only     -> reminder at 08:00 on due date.
-     * - Time only     -> reminder 10 minutes before today’s time.
-     * - Date & Time   -> reminder 10 minutes before due date/time.
-     * - No date/time  -> no reminder.
-     *
-     * @return Reminder time in epoch milliseconds or null
-     * if a reminder cannot be scheduled.
-     */
-    private fun calculateReminderTime(task: Task): Long? {
 
+    private companion object {
+        const val DEFAULT_REMINDER_HOUR = 8
+        const val DEFAULT_REMINDER_MINUTE = 0
+        const val WORK_NAME_PREFIX = "task_reminder_"
+    }
+
+    private fun calculateReminderTime(task: Task): Long? {
         val dueDate = task.dueDate
         val dueTime = task.dueTime
 
         return when {
+            dueDate == null && dueTime == null -> null
 
-            // ❌ Date ❌ Time
-            dueDate == null && dueTime == null -> {
-                null
-            }
-
-            // ✅ Date ❌ Time
+            // ✅ Date only -> at DEFAULT_REMINDER_HOUR on due date
             dueDate != null && dueTime == null -> {
-
-                val gregorianDate =
-                    PersianDateConverter.toGregorian(
-                        dueDate.year,
-                        dueDate.month,
-                        dueDate.day
-                    )
-
+                val g = PersianDateConverter.toGregorian(
+                    dueDate.year, dueDate.month, dueDate.day
+                )
                 LocalDateTime.of(
-                    gregorianDate.year,
-                    gregorianDate.monthValue,
-                    gregorianDate.dayOfMonth,
-                    8,
-                    0
+                    g.year, g.monthValue, g.dayOfMonth,
+                    DEFAULT_REMINDER_HOUR, DEFAULT_REMINDER_MINUTE
                 )
                     .atZone(ZoneId.systemDefault())
                     .toInstant()
                     .toEpochMilli()
             }
 
-            // ❌ Date ✅ Time
+            // ✅ Time only -> exact time today, or tomorrow if passed
             dueDate == null && dueTime != null -> {
-
                 val now = LocalDateTime.now()
-
-                LocalDateTime.of(
-                    now.year,
-                    now.monthValue,
-                    now.dayOfMonth,
-                    dueTime.hour,
-                    dueTime.minute
+                var target = LocalDateTime.of(
+                    now.year, now.monthValue, now.dayOfMonth,
+                    dueTime.hour, dueTime.minute
                 )
-                    .minusMinutes(10)
+                if (!target.isAfter(now)) target = target.plusDays(1)
+                target
                     .atZone(ZoneId.systemDefault())
                     .toInstant()
                     .toEpochMilli()
             }
 
-            // ✅ Date ✅ Time
+            // ✅ Date + Time -> exact
             else -> {
-
-                val gregorianDate =
-                    PersianDateConverter.toGregorian(
-                        dueDate!!.year,
-                        dueDate.month,
-                        dueDate.day
-                    )
-
-                LocalDateTime.of(
-                    gregorianDate.year,
-                    gregorianDate.monthValue,
-                    gregorianDate.dayOfMonth,
-                    dueTime!!.hour,
-                    dueTime.minute
+                val g = PersianDateConverter.toGregorian(
+                    dueDate!!.year, dueDate.month, dueDate.day
                 )
-                    .minusMinutes(10)
+                LocalDateTime.of(
+                    g.year, g.monthValue, g.dayOfMonth,
+                    dueTime!!.hour, dueTime.minute
+                )
                     .atZone(ZoneId.systemDefault())
                     .toInstant()
                     .toEpochMilli()
@@ -122,55 +83,31 @@ class TaskReminderScheduler @Inject constructor(
         }
     }
 
-    /**
-     * Schedules a one-time WorkManager task
-     * for the supplied task reminder.
-     *
-     * Existing reminder work for the same task
-     * will be replaced automatically.
-     */
     fun scheduleTaskReminder(task: Task) {
-
         val reminderTime = calculateReminderTime(task) ?: return
         val delay = reminderTime - System.currentTimeMillis()
-        if (delay <= 0) {
-            return
-        }
-
+        if (delay <= 0) return
 
         val data = workDataOf(
             ReminderWorkerKeys.TASK_ID to task.id,
             ReminderWorkerKeys.TITLE to task.title,
-            ReminderWorkerKeys.MESSAGE to "زمان انجام این کار نزدیک است"
+            ReminderWorkerKeys.MESSAGE to "زمان انجام این کار رسیده"
         )
 
-        val request =
-            OneTimeWorkRequestBuilder<TaskReminderWorker>()
-                .setInputData(data)
-                .setInitialDelay(
-                    delay,
-                    TimeUnit.MILLISECONDS
-                )
-                .build()
+        val request = OneTimeWorkRequestBuilder<TaskReminderWorker>()
+            .setInputData(data)
+            .setInitialDelay(delay, TimeUnit.MILLISECONDS)
+            .build()
 
-        WorkManager
-            .getInstance(this.context)
-            .enqueueUniqueWork(
-                "task_reminder_${task.id}",
-                ExistingWorkPolicy.REPLACE,
-                request
-            )
+        WorkManager.getInstance(context).enqueueUniqueWork(
+            "$WORK_NAME_PREFIX${task.id}",
+            ExistingWorkPolicy.REPLACE,
+            request
+        )
     }
 
-    /**
-     * Cancels the scheduled reminder
-     * associated with the provided task id.
-     */
     fun cancelTaskReminder(taskId: Long) {
-        WorkManager
-            .getInstance(this.context)
-            .cancelUniqueWork("task_reminder_$taskId")
+        WorkManager.getInstance(context)
+            .cancelUniqueWork("$WORK_NAME_PREFIX$taskId")
     }
-
 }
-

@@ -15,9 +15,9 @@ interface NotificationScheduler {
     /**
      * Schedules a reminder for the given task.
      */
-    fun schedule(task: Task)
+    fun scheduleTaskReminder(task: Task)
     /**
      * Cancels the reminder associated with the specified task.
      */
-    fun cancel(taskId: Long)
+    fun cancelTaskReminder(taskId: Long)
 }

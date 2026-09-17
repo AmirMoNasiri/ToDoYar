@@ -19,14 +19,14 @@ class NotificationSchedulerImpl @Inject constructor(
     /**
      * Schedules a reminder notification for the given task.
      */
-    override fun schedule(task: Task) {
+    override fun scheduleTaskReminder(task: Task) {
         taskReminderScheduler.scheduleTaskReminder(task = task)
     }
 
     /**
      * Cancels any scheduled reminder associated with the task.
      */
-    override fun cancel(taskId: Long) {
+    override fun cancelTaskReminder(taskId: Long) {
         taskReminderScheduler.cancelTaskReminder(taskId = taskId)
     }
 }

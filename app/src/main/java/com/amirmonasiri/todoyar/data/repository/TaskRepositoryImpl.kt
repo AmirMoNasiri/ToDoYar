@@ -37,7 +37,7 @@ class TaskRepositoryImpl @Inject constructor(
      */
     override suspend fun addTask(task: Task) {
         val id = dao.insertTask(task.toEntity())
-        scheduler.schedule(task.copy(id = id))
+        scheduler.scheduleTaskReminder(task.copy(id = id))
     }
 
     /**
@@ -49,9 +49,9 @@ class TaskRepositoryImpl @Inject constructor(
     override suspend fun updateTask(task: Task) {
         dao.updateTask(task.toEntity())
         if (task.isCompleted) {
-            scheduler.cancel(task.id)
+            scheduler.cancelTaskReminder(task.id)
         } else {
-            scheduler.schedule(task)
+            scheduler.scheduleTaskReminder(task)
         }
     }
 
@@ -59,7 +59,7 @@ class TaskRepositoryImpl @Inject constructor(
      * Removes a task and cancels any associated reminder.
      */
     override suspend fun deleteTask(task: Task) {
-        scheduler.cancel(task.id)
+        scheduler.cancelTaskReminder(task.id)
         dao.deleteTask(task.toEntity())
     }
 

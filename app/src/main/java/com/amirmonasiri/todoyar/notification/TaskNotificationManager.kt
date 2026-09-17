@@ -68,15 +68,6 @@ object TaskNotificationManager {
                     PendingIntent.FLAG_IMMUTABLE
         )
 
-//        if (
-//            ContextCompat.checkSelfPermission(
-//                context,
-//                Manifest.permission.POST_NOTIFICATIONS
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            return
-//        }
-
         val notification = NotificationCompat.Builder(
             context,
             NotificationHelper.CHANNEL_ID
@@ -93,6 +84,8 @@ object TaskNotificationManager {
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
+            .setCategory(NotificationCompat.CATEGORY_REMINDER)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .build()
 
         NotificationManagerCompat

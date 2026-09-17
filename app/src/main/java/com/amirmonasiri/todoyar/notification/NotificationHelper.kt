@@ -15,6 +15,7 @@ import android.os.Build
 object NotificationHelper {
     const val CHANNEL_ID = "task_reminders"
     private const val CHANNEL_NAME = "Task Reminders"
+    private const val CHANNEL_DESCRIPTION = "Task reminder notifications"
 
     /**
      * Creates the notification channel if it does not already exist.
@@ -22,7 +23,7 @@ object NotificationHelper {
      * @param context Application context used to access
      * NotificationManager system service.
      */
-    fun notificationChannelProvider(context: Context) {
+    fun createNotificationChannels(context: Context) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
@@ -31,14 +32,15 @@ object NotificationHelper {
                 CHANNEL_NAME,
                 NotificationManager.IMPORTANCE_HIGH
             ).apply {
-                description = "Task reminder notifications"
+                description = CHANNEL_DESCRIPTION
                 enableVibration(true)
+                vibrationPattern = longArrayOf(0, 300)
+
             }
 
-            val manager =
-                context.getSystemService(
-                    Context.NOTIFICATION_SERVICE
-                ) as NotificationManager
+            val manager = context.getSystemService(
+                Context.NOTIFICATION_SERVICE
+            ) as NotificationManager
 
             manager.createNotificationChannel(channel)
         }
