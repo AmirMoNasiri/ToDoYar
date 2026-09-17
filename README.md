@@ -52,24 +52,6 @@ Tasks can be organized using categories such as:
 
 Users can also create and remove custom categories.
 
-### ⭐ Task Priorities
-
-Each task can have a priority level:
-
-* Low
-* Medium
-* High
-* Urgent
-
-### 📅 Date & Time
-
-Tasks can have:
-
-* Due dates
-* Due times
-* Persian/Jalali date support
-* 24-hour time selection
-
 ### 🔔 Reminders
 
 To Do Yar uses Android background scheduling to provide task reminders even when the application is not actively open.
@@ -111,54 +93,10 @@ The selected theme is persisted locally using **DataStore**.
 | **Flow**            | Reactive data streams              |
 | **WorkManager**     | Background task scheduling         |
 | **Navigation**      | Screen navigation                  |
-| **Lottie**          | UI animations                      |
+
 
 ---
 
-## 🏗 Architecture
-
-To Do Yar follows the **MVVM (Model–View–ViewModel)** architecture pattern.
-
-```text
-┌───────────────────────────┐
-│          UI Layer         │
-│     Jetpack Compose       │
-└─────────────┬─────────────┘
-              │
-              │ UI Events
-              ▼
-┌───────────────────────────┐
-│       ViewModel Layer     │
-│        State + Logic      │
-└─────────────┬─────────────┘
-              │
-              ▼
-┌───────────────────────────┐
-│      Repository Layer     │
-│   Task / Category Data     │
-└─────────────┬─────────────┘
-              │
-       ┌──────┴──────┐
-       ▼             ▼
-┌────────────┐  ┌─────────────┐
-│    Room    │  │  DataStore  │
-│  Database  │  │ Preferences │
-└────────────┘  └─────────────┘
-```
-
-Background reminders are handled separately through **WorkManager** and the Android notification system.
-
-### Main architectural components
-
-* **UI:** Jetpack Compose
-* **ViewModel:** UI state and user interactions
-* **Repository:** Data access and application data operations
-* **Room:** Persistent task and category storage
-* **DataStore:** Application preferences
-* **Hilt:** Dependency injection
-* **WorkManager:** Background reminder scheduling
-
----
 
 ## 📸 Screenshots
 
@@ -189,82 +127,6 @@ Here are some screenshots of the To Do Yar application.
 | <img src="screenshots/light-theme.png" width="300"> | <img src="screenshots/dark-theme.png" width="300"> |
 
 > **Note:** Replace the image paths above with the actual screenshots included in the `screenshots/` directory.
-
----
-
-## 📂 Project Structure
-
-```text
-app/
-├── data/
-│   ├── local/
-│   │   ├── dao/
-│   │   ├── database/
-│   │   └── entity/
-│   │
-│   └── repository/
-│
-├── di/
-│   └── module/
-│
-├── model/
-│
-├── notification/
-│
-├── utils/
-│
-├── view/
-│   ├── event/
-│   ├── screen/
-│   ├── state/
-│   └── components/
-│
-├── viewModel/
-│
-└── MainActivity.kt
-```
-
-The project structure may evolve as the application grows and responsibilities are further separated.
-
----
-
-## 💾 Data Storage
-
-To Do Yar uses **Room Database** for persistent application data.
-
-The database stores information such as:
-
-* Tasks
-* Task categories
-* Completion status
-* Task priorities
-* Due dates and times
-
-**DataStore** is used for lightweight application preferences, such as the selected theme.
-
----
-
-## 🔔 Notification & Background Work
-
-Task reminders are scheduled using Android's background work system.
-
-```text
-Task
-  │
-  ▼
-Reminder Scheduler
-  │
-  ▼
-WorkManager
-  │
-  ▼
-Task Reminder Worker
-  │
-  ▼
-Android Notification
-```
-
-This allows scheduled reminders to be processed independently from the application's UI lifecycle.
 
 ---
 
