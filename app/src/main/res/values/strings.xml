@@ -2,8 +2,6 @@
 <resources>
 
     <string name="app_name">To Do Yar</string>
-    <string name="app_name_fa">تودویار</string>
-
 
     <string name="splash">اسپلش</string>
     <string name="feedback">بازخورد</string>
