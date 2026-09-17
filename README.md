@@ -94,9 +94,29 @@ The selected theme is persisted locally using **DataStore**.
 | **WorkManager**     | Background task scheduling         |
 | **Navigation**      | Screen navigation                  |
 
-
 ---
 
+## 📐 Architecture
+
+To Do Yar follows the **MVVM (Model–View–ViewModel)** architecture pattern.
+
+The main application flow can be summarized as:
+
+```text
+UI
+ ↓
+ViewModel
+ ↓
+Repository
+ ↓
+Room / DataStore
+```
+
+Background task reminders are handled separately using **WorkManager** and Android notifications.
+
+This architecture helps keep the UI layer independent from data sources and makes the application easier to maintain and extend.
+
+---
 
 ## 📸 Screenshots
 
@@ -126,13 +146,15 @@ Here are some screenshots of the To Do Yar application.
 | --------------------------------------------------- | -------------------------------------------------- |
 | <img src="screenshots/light-theme.png" width="300"> | <img src="screenshots/dark-theme.png" width="300"> |
 
-> **Note:** Replace the image paths above with the actual screenshots included in the `screenshots/` directory.
+> **Note:** Make sure all screenshot files are placed inside the `screenshots/` directory with the filenames used above.
 
 ---
 
 ## 📦 APK
 
-A release APK can be provided in the project's release section.
+The latest release of **To Do Yar** is available on GitHub Releases.
+
+**[⬇️ Download To Do Yar v1.0.0](https://github.com/AmirMoNasiri/ToDoYar/releases/tag/v1.0.0)**
 
 The APK can be installed directly on a compatible Android device for testing.
 
@@ -165,7 +187,7 @@ To Do Yar was developed as a **Bachelor's degree project**.
 
 ## 📌 Project Status
 
-The project is currently under development and may receive further improvements and refinements.
+**Version 1.0.0** represents the final release of the To Do Yar project.
 
 ---
 
