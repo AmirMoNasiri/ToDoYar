@@ -200,35 +200,23 @@ fun DrawerContent(
     ModalDrawerSheet(modifier = Modifier.width(screenWidth * 0.65f)) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(24.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
         ) {
             // -------------------------
             // App Header
             // -------------------------
             Image(
                 painter = painterResource(R.drawable.ic_todoyar_noback),
-                contentDescription = "App Name",
+                contentDescription = "App Logo",
                 modifier = Modifier
                     .padding(8.dp)
-                    .size(100.dp),
+                    .size(150.dp),
                 colorFilter = ColorFilter.tint(
                     MaterialTheme.colorScheme.primary
                 )
             )
-            Spacer(modifier = Modifier.width(16.dp))
-
-            Column(
-                modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = stringResource(R.string.app_name_fa),
-                    style = MaterialTheme.typography.headlineMedium,
-                    fontWeight = FontWeight.Bold
-                )
-            }
         }
 
 

@@ -32,7 +32,7 @@ import com.amirmonasiri.todoyar.view.ui.theme.Dimens
  * Contains the profile picture, title and a short action message.
  * This component serves as the header of the profile screen.
  *
- * Currently a placeholder state is shown until user authentication
+ * a placeholder state is shown until user authentication
  * and profile information are implemented.
  */
 @Composable
@@ -76,7 +76,7 @@ fun ProfileHeader() {
                 )
                 Spacer(Modifier.height(16.dp))
                 Text(
-                    text = "برای ورود کلیک کنید",
+                    text = "این قسمت در نسخه های آینده در دسترس خواهد بود",
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
