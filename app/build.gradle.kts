@@ -73,8 +73,6 @@ dependencies {
     ksp(libs.hilt.work.compiler)
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.0")
     implementation("com.patrykandpatrick.vico:core:2.0.1")
-    implementation("com.patrykandpatrick.vico:compose:2.0.1")
-    implementation("com.patrykandpatrick.vico:compose-m3:2.0.1")
     implementation("com.adamglin:phosphor-icon:1.0.0")
     implementation("io.github.faridsolgi:persian-date-picker:0.0.14")
     implementation("io.github.faridsolgi:persianDateTime:0.2.2")
