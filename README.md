@@ -122,31 +122,33 @@ This architecture helps keep the UI layer independent from data sources and make
 
 Here are some screenshots of the To Do Yar application.
 
-### 🏠 Task Management
+### 📝 Task Management
 
-| Task List                                     | Add Task                                         |
-| --------------------------------------------- | ------------------------------------------------ |
-| <img src="screenshots/tasks.png" width="300"> | <img src="screenshots/add-task.png" width="300"> |
+| Task List - Light | Task List - Dark |
+| :---: | :---: |
+| <img src="screenshots/tasks_light.jpg" width="300"> | <img src="screenshots/tasks_dark.jpg" width="300"> |
 
-### 📅 Calendar & Tasks
+| New Task | Edit Task |
+| :---: | :---: |
+| <img src="screenshots/new_task.jpg" width="300"> | <img src="screenshots/edit_task.jpg" width="300"> |
 
-| Calendar                                         | Task Details                                         |
-| ------------------------------------------------ | ---------------------------------------------------- |
-| <img src="screenshots/calendar.png" width="300"> | <img src="screenshots/task-details.png" width="300"> |
+### 📅 Calendar & Profile
 
-### 📊 Statistics
+| Calendar | Profile |
+| :---: | :---: |
+| <img src="screenshots/calendar.jpg" width="300"> | <img src="screenshots/profile.jpg" width="300"> |
 
-| Activity                                         | Statistics                                         |
-| ------------------------------------------------ | -------------------------------------------------- |
-| <img src="screenshots/activity.png" width="300"> | <img src="screenshots/statistics.png" width="300"> |
+### 🏷️ Categories
 
-### 🌓 Themes
+| Categories |
+| :---: |
+| <img src="screenshots/categories.jpg" width="300"> |
 
-| Light Theme                                         | Dark Theme                                         |
-| --------------------------------------------------- | -------------------------------------------------- |
-| <img src="screenshots/light-theme.png" width="300"> | <img src="screenshots/dark-theme.png" width="300"> |
+### 📂 Navigation Drawer
 
-> **Note:** Make sure all screenshot files are placed inside the `screenshots/` directory with the filenames used above.
+| Light Theme | Dark Theme |
+| :---: | :---: |
+| <img src="screenshots/drawer_light.jpg" width="300"> | <img src="screenshots/drawer_dark.jpg" width="300"> |
 
 ---
 
