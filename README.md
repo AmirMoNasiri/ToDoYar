@@ -126,29 +126,29 @@ Here are some screenshots of the To Do Yar application.
 
 | Task List - Light | Task List - Dark |
 | :---: | :---: |
-| <img src="screenshots/tasks_light.jpg" width="300"> | <img src="screenshots/tasks_dark.jpg" width="300"> |
+| <img src="assets/screenshots/tasks_light.jpg" width="300"> | <img src="assets/screenshots/tasks_dark.jpg" width="300"> |
 
 | New Task | Edit Task |
 | :---: | :---: |
-| <img src="screenshots/new_task.jpg" width="300"> | <img src="screenshots/edit_task.jpg" width="300"> |
+| <img src="assets/screenshots/new_task.jpg" width="300"> | <img src="assets/screenshots/edit_task.jpg" width="300"> |
 
 ### 📅 Calendar & Profile
 
 | Calendar | Profile |
 | :---: | :---: |
-| <img src="screenshots/calendar.jpg" width="300"> | <img src="screenshots/profile.jpg" width="300"> |
+| <img src="assets/screenshots/calendar.jpg" width="300"> | <img src="assets/screenshots/profile.jpg" width="300"> |
 
 ### 🏷️ Categories
 
 | Categories |
 | :---: |
-| <img src="screenshots/categories.jpg" width="300"> |
+| <img src="assets/screenshots/categories.jpg" width="300"> |
 
 ### 📂 Navigation Drawer
 
 | Light Theme | Dark Theme |
 | :---: | :---: |
-| <img src="screenshots/drawer_light.jpg" width="300"> | <img src="screenshots/drawer_dark.jpg" width="300"> |
+| <img src="assets/screenshots/drawer_light.jpg" width="300"> | <img src="assets/screenshots/drawer_dark.jpg" width="300"> |
 
 ---
 
@@ -158,9 +158,7 @@ The latest release of **To Do Yar** is available on GitHub Releases.
 
 **[⬇️ Download To Do Yar v1.0.0](https://github.com/AmirMoNasiri/ToDoYar/releases/tag/v1.0.0)**
 
-| Myket | Bazaar |
-| :---: | :---: |
-| [![Get it on Myket](assets/badges/get-en.png)](https://myket.ir/YOUR_APP_LINK) | [![Get it on Bazaar](assets/badges/get-cafebazar.png)](https://cafebazaar.ir/app/YOUR_APP_PACKAGE_NAME) |
+<p align="center"> <a href="https://myket.ir/YOUR_APP_LINK"> <img src="assets/badges/get-en.png" alt="Get it on Myket" width="160"> </a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://cafebazaar.ir/app/YOUR_APP_PACKAGE_NAME"> <img src="assets/badges/get-cafebazaar-en.png" alt="Get it on Bazaar" width="160"> </a> </p>
 
 The APK can be installed directly on a compatible Android device for testing.
 
