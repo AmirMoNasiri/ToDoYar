@@ -158,6 +158,10 @@ The latest release of **To Do Yar** is available on GitHub Releases.
 
 **[⬇️ Download To Do Yar v1.0.0](https://github.com/AmirMoNasiri/ToDoYar/releases/tag/v1.0.0)**
 
+| Myket | Bazaar |
+| :---: | :---: |
+| [![Get it on Myket](assets/badges/get-en.png)](https://myket.ir/YOUR_APP_LINK) | [![Get it on Bazaar](assets/badges/get-cafebazar.png)](https://cafebazaar.ir/app/YOUR_APP_PACKAGE_NAME) |
+
 The APK can be installed directly on a compatible Android device for testing.
 
 ---
