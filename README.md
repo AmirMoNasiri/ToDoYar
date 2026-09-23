@@ -161,6 +161,12 @@ The latest release of **To Do Yar** is available on GitHub Releases.
 <a href="https://myket.ir/YOUR_APP_LINK"> <img src="assets/badges/get-en.png" alt="Get it on Myket" width="160"> </a>
 <a href="https://cafebazaar.ir/app/com.amirmonasiri.todoyar"> <img src="assets/badges/get-cafebazaar-en.png" alt="Get it on Bazaar" width="160"> </a>
 
+<p align="center">
+  <a href="https://myket.ir/YOUR_APP_LINK"><img src="assets/badges/get-en.png" alt="Get it on Myket" width="160" style="vertical-align: middle;"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://cafebazaar.ir/app/com.amirmonasiri.todoyar"><img src="assets/badges/get-cafebazaar-en.png" alt="Get it on Bazaar" width="160" style="vertical-align: middle;"></a>
+</p>
+
 The APK can be installed directly on a compatible Android device for testing.
 
 ---
