@@ -4,6 +4,8 @@
 
 The application is built with **Kotlin** and **Jetpack Compose**, following the **MVVM architecture** and modern Android development practices. It uses **Room**, **DataStore**, **Dagger Hilt**, **Coroutines**, **Flow**, and **WorkManager** to provide a maintainable and responsive application architecture.
 
+<img src="assets/ToDoYar_Tamneel.png">
+
 ---
 
 ## 📱 About the Project
